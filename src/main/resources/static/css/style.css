@@ -1,0 +1,14 @@
+.upper-bar {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    background-color: aquamarine;
+}
+
+.lower-form {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    bottom: 0;
+}

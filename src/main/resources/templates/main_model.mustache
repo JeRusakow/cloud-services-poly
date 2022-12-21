@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stories</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        .upper-bar {
+            position: fixed;
+            width: 100%;
+            overflow: hidden;
+            top: 0;
+            height: 50px;
+            background-color: whitesmoke;
+        }
+        .lower-form {
+            position: fixed;
+            width: 100%;
+            overflow: hidden;
+            bottom: 0;
+            margin-bottom: 10px;
+            background-color: whitesmoke;
+        }
+        .content-list {
+            margin-top: 50px;
+            margin-bottom: 150px;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="upper-bar">
+        <h2>Story list</h2>
+    </div>
+    <br>
+    <div class="content-list">
+        <table>
+            {{#stories}}
+                <tr>
+                    <td>
+                        <b>{{username}}</b>
+                    </td>
+                    <td>
+                        <span>{{story}}</span>
+                    </td>
+                </tr>
+            {{/stories}}
+
+        </table>
+    </div>
+</div>
+
+<div class="lower-form">
+    <br>
+    <h4>Post your message</h4>
+    <form method="post">
+        <input type="text" name="username" placeholder="Your nickname" />
+        <input type="text" name="story" placeholder="Your text" />
+        <button type="submit">Post</button>
+    </form>
+</div>
+
+</body>
+</html>
