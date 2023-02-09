@@ -20,7 +20,7 @@ public class StoriesController {
     @Autowired
     private StoryRepository storyRepo;
 
-    @GetMapping
+    @GetMapping("/stories")
     public String getStories(Map<String, Object> model){
         Iterable<Story> stories = storyRepo.findAll();
         model.put("stories", stories);
@@ -28,7 +28,7 @@ public class StoriesController {
         return "main_model";
     }
 
-    @PostMapping
+    @PostMapping("/stories")
     public String addStory(
             @RequestParam String story,
             @RequestParam String username,
@@ -42,7 +42,7 @@ public class StoriesController {
         Iterable<Story> stories =  storyRepo.findAll();
         model.put("stories", stories);
 
-        return "main_model";
+        return "redirect:/stories";
     }
 
     @GetMapping("/greet")
