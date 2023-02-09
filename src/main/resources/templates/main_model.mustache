@@ -26,6 +26,17 @@
             margin-bottom: 150px;
             background-color: whitesmoke;
         }
+        .name-cell {
+            font-style: normal;
+            font-weight: bold;
+        }
+        .timestamp {
+            font-style: normal;
+            font-weight: lighter;
+        }
+        .text-cell {
+            width: 100em;
+        }
     </style>
 </head>
 <body>
@@ -38,11 +49,12 @@
         <table>
             {{#stories}}
                 <tr>
-                    <td>
-                        <b>{{username}}</b>
+                    <td class="name-cell">
+                        <p class="username">{{username}}</p>
+                        <p class="timestamp">{{timestamp}}</p>
                     </td>
-                    <td>
-                        <span>{{story}}</span>
+                    <td class="text-cell">
+                        <p>{{story}}</p>
                     </td>
                 </tr>
             {{/stories}}

@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Map;
 
 @Controller
@@ -30,7 +34,9 @@ public class StoriesController {
             @RequestParam String username,
             Map<String, Object> model
     ){
-        Story newStory = new Story(username, story);
+
+        String timestamp = LocalDate.now().toString();
+        Story newStory = new Story(username, story, timestamp);
         storyRepo.save(newStory);
 
         Iterable<Story> stories =  storyRepo.findAll();
