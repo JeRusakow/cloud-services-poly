@@ -13,7 +13,9 @@ import javax.swing.*;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Controller
@@ -40,8 +42,8 @@ public class StoriesController {
             @RequestParam String username,
             Map<String, Object> model
     ){
-
-        String timestamp = LocalDate.now().toString();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String timestamp = formatter.format(LocalDateTime.now());
         Story newStory = new Story(username, story, timestamp);
         storyRepo.save(newStory);
 
