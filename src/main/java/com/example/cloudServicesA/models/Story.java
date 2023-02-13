@@ -22,8 +22,18 @@ public class Story {
     private String timestamp;
 
     public Story(String username, String story, String timestamp) {
-        this.username = Objects.requireNonNullElse(username, "Anon");
-        this.story = Objects.requireNonNullElse(story, "N/A");
+        if (username.equals("")) {
+            this.username = "Anon";
+        } else {
+            this.username = Objects.requireNonNullElse(username, "Anon");
+        }
+
+        if (story.equals("")) {
+            this.story = "N/A";
+        } else {
+            this.story = Objects.requireNonNullElse(story, "N/A");
+        }
+
         this.timestamp = Objects.requireNonNullElse(timestamp, "N/A");
     }
 
