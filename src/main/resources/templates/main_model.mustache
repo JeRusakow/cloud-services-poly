@@ -3,75 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <title>Stories</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <style>
+        body {
+            background-color: #E5E5E5;
+        }
         .upper-bar {
             position: fixed;
             width: 100%;
-            overflow: hidden;
+            height: 205px;
             top: 0;
-            height: 50px;
             background-color: whitesmoke;
         }
-        .lower-form {
-            position: fixed;
-            width: 100%;
-            overflow: hidden;
-            bottom: 0;
-            margin-bottom: 10px;
-            background-color: whitesmoke;
+        .story-form {
         }
         .content-list {
-            margin-top: 50px;
-            margin-bottom: 150px;
-            background-color: whitesmoke;
+            width: 50em;
+            overflow-y: auto;
+            margin-top: 205px;
         }
-        .name-cell {
+        .username-cell {
             font-style: normal;
             font-weight: bold;
         }
-        .timestamp {
-            font-style: normal;
+        .timestamp-cell {
+            font-style: italic;
             font-weight: lighter;
         }
-        .text-cell {
-            width: 100em;
+        .story-box {
+            width: inherit;
+            margin-left: 10px;
+        }
+        .story-box-outer {
+            width: inherit;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            background-color: whitesmoke;
+        }
+        .left-col {
+            width: 40%;
+        }
+        .mid-col {
+            width: 35%;
+        }
+        .right-col {
+            width: 25%;
+        }
+        #submit-button {
+            alignment: right;
+        }
+        .header {
+            margin-left: 2px;
         }
     </style>
 </head>
 <body>
 <div>
     <div class="upper-bar">
-        <h2>Story list</h2>
+
+        <div id="main-header">
+            <h2 class="header">Story list</h2>
+        </div>
+
+        <div class="story-form">
+            <h4 class="header">Post your message</h4>
+            <form method="post">
+                <table>
+                    <tr>
+                        <td class="left-col">
+                            <input type="text" name="username" placeholder="Your nickname" />
+                        </td>
+                        <td class="mid-col"></td>
+                        <td class="right-col"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                        <textarea name="story" placeholder="Your text" maxlength="255" cols="60"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left-col"></td>
+                        <td class="mid-col"></td>
+                        <td class="right-col">
+                            <button type="submit" id="submit-button">Post!</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </div>
-    <br>
+
+
+
     <div class="content-list">
-        <table>
-            {{#stories}}
-                <tr>
-                    <td class="name-cell">
-                        <p class="username">{{username}}</p>
-                        <p class="timestamp">{{timestamp}}</p>
-                    </td>
-                    <td class="text-cell">
-                        <p>{{story}}</p>
-                    </td>
-                </tr>
-            {{/stories}}
 
-        </table>
+        {{#stories}}
+            <div class="story-box-outer">
+                <div class="story-box">
+                    <table>
+                        <tr>
+                            <td class="left-col">
+                                <span class="username-cell">{{username}}</span>
+                            </td>
+                            <td class="mid-col"></td>
+                            <td class="right-col"></td>
+                        </tr>
+                        <tr>
+                            <td class="left-col" colspan="3">
+                                <span class="story-cell">{{story}}</span>
+                            </td>
+                            <td class="mid-col"></td>
+                            <td class="right-col"></td>
+                        </tr>
+                        <tr>
+                            <td class="left-col"></td>
+                            <td class="mid-col"></td>
+                            <td class="right-col">
+                                <span class="timestamp-cell">{{timestamp}}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        {{/stories}}
+
     </div>
 </div>
 
-<div class="lower-form">
-    <br>
-    <h4>Post your message</h4>
-    <form method="post">
-        <input type="text" name="username" placeholder="Your nickname" />
-        <input type="text" name="story" placeholder="Your text" />
-        <button type="submit">Post</button>
-    </form>
-</div>
+
 
 </body>
 </html>
